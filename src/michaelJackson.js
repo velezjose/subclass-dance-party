@@ -12,23 +12,26 @@ var MichaelJackson = function (top, left, timeBetweenSteps) {
 MichaelJackson.prototype = Object.create(Dancer.prototype);
 MichaelJackson.prototype.constructor = MichaelJackson;
 MichaelJackson.prototype.oldStep = Dancer.prototype.step;
+MichaelJackson.prototype.linedUp = false;
 
 MichaelJackson.prototype.step = function () {
   this.oldStep();
 
+  if (!this.linedUp) {
+    this.counter++;
 
-  this.counter++;
+    if (this.counter > 20) {
+      this.counter = 0;
+      this.goRight = !this.goRight;
+      this.$node.toggleClass('flipped');
+    }
 
-  if (this.counter > 20) {
-    this.counter = 0;
-    this.goRight = !this.goRight;
-    this.$node.toggleClass('flipped');
+    if (this.goRight) {
+      this.left += 10;
+    } else {
+      this.left -= 10;
+    }
+    this.setPosition(this.top, this.left);
   }
-
-  if (this.goRight) {
-    this.left += 10;
-  } else {
-    this.left -= 10;
-  }
-  this.setPosition(this.top, this.left);
+  
 };

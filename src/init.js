@@ -28,6 +28,31 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+    window.dancers.push(dancer);  
+    console.log(window.dancers);
+  });
+
+  $('.lineUpDancers').on('click', function(event) {
+    MichaelJackson.prototype.linedUp = true; // FIXME ????
+    var half = Math.floor(window.dancers.length / 2);
+    var left = $('body').width() * 0.10;
+    var right = $('body').width() * 0.90;
+    var height = $('body').height();
+    var top = height * 0.90;
+    var bottom = height * 0.10;
+    var deltaHeight = (top - bottom)/ half;
+
+    for (let i = 0; i < half; i++) {
+      var dancer = window.dancers[i];
+      dancer.setPosition(bottom + (i * deltaHeight), left);
+    }
+
+    for (let i = half; i < window.dancers.length; i++) {
+      var dancer = window.dancers[i];
+      dancer.setPosition(bottom + ((i - half) * deltaHeight), right);
+    }
+
   });
 });
 
