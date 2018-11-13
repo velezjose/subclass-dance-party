@@ -1,14 +1,21 @@
 var MichaelJackson = function (top, left, timeBetweenSteps) {
+
+  var adjustPostion = function (top, left) {
+    while (top < 10 || top > $(window).height() - this.$node.children().height() - 300) {
+      top = $(window).height() * Math.random();
+    }
+
+    while (left < 5 || left > $(window).width() - this.$node.children().width() - 400) {
+      left = $(window).width() * Math.random();
+    }
+
+    return [top, left];
+  };
+
   Dancer.call(this, top, left, 100);  
   this.$node.append('<img src="assets/moonwalk1.gif"/>');
 
-  while (top < 10 || top > $(window).height() - this.$node.children().height() - 300) {
-    top = $(window).height() * Math.random();
-  }
-
-  while (left < 5 || left > $(window).width() - this.$node.children().width() - 400) {
-    left = $(window).width() * Math.random();
-  }
+  [top, left] = adjustPostion.call(this, top, left);
 
   this.setPosition(top, left);  
   this.top = top;
