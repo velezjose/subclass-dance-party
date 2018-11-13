@@ -33,8 +33,51 @@ body, a:link, a:visited, a:active{
 } 
 */
 
-.rotatingDancer{
-  transform: rotate(0deg);
+/*.slidein {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: 3;
+  animation-direction: alternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-left:100%;
+    width:300%
+  }
+  
+  to {
+    margin-left:0%;
+    width:100%;
+  }
+}*/
+
+.rotate-counter-clockwise {
+  animation-duration: 2s;
+  animation-name: rotate-counter-clockwise;
+}
+
+@keyframes rotate-counter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-clockwise {
+  animation-duration: 2s;
+  animation-name: rotate-clockwise;
+}
+
+@keyframes rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 /*
