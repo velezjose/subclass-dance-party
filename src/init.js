@@ -34,26 +34,28 @@ $(document).ready(function() {
 
   $('.lineUpDancers').on('click', function(event) {
     MichaelJackson.prototype.linedUp = true; // FIXME ????
-    var half = Math.floor(window.dancers.length / 2);
+    var halfNumDancers = Math.floor(window.dancers.length / 2);
     var left = $('body').width() * 0.20;
     var leftEnd = left - 300;
     var right = $('body').width() * 0.60;
     var height = $('body').height();
     var bottom = height * 0.80;
-    var top = height * 0.10;
-    var deltaHeight = (bottom - top) / half;
-    var deltaWidth = (left - leftEnd) / half;
+    var top = height * 0.20;
+    var deltaHeight = (bottom - top) / halfNumDancers;
+    var deltaWidth = (left - leftEnd) / halfNumDancers;
 
-    for (let i = 0; i < half; i++) {
+    for (let i = 0; i < halfNumDancers; i++) {
       var dancer = window.dancers[i];
-      var dancerXPosition = (left - i * deltaWidth) - 0.5 * dancer.$node.children().width();
-      dancer.setPosition(top + (i * deltaHeight), dancerXPosition);
+      var dancerXPosition = left - (i * deltaWidth) - (0.5 * dancer.$node.children().width());
+      var dancerYPosition = top + (i * deltaHeight) - (0.5 * dancer.$node.children().height());
+      dancer.setPosition(dancerYPosition, dancerXPosition);
     }
 
-    for (let i = half; i < window.dancers.length; i++) {
+    for (let i = halfNumDancers; i < window.dancers.length; i++) {
       var dancer = window.dancers[i];
-      var dancerXPosition = (right + i * deltaWidth) - 0.5 * dancer.$node.children().width();
-      dancer.setPosition(top + ((i - half) * deltaHeight), dancerXPosition);
+      var dancerXPosition = right + (i * deltaWidth) - (0.5 * dancer.$node.children().width());
+      var dancerYPosition = top + ((i - halfNumDancers) * deltaHeight) - (0.5 * dancer.$node.children().height());
+      dancer.setPosition(dancerYPosition, dancerXPosition);
     }
 
   });
