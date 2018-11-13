@@ -1,7 +1,16 @@
 var MichaelJackson = function (top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, 100);
-  // this.$node.addClass('michaelJackson');
+  Dancer.call(this, top, left, 100);  
   this.$node.append('<img src="assets/moonwalk1.gif"/>');
+
+  while (top < 10 || top > $(window).height() - this.$node.children().height() - 300) {
+    top = $(window).height() * Math.random();
+  }
+
+  while (left < 5 || left > $(window).width() - this.$node.children().width() - 400) {
+    left = $(window).width() * Math.random();
+  }
+
+  this.setPosition(top, left);  
   this.top = top;
   this.left = left;
   this.initialLeft = left;

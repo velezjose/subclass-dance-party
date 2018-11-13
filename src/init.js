@@ -21,7 +21,6 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       Math.abs($('body').height() * Math.random() - 50),
       Math.abs($('body').width() * Math.random() - 50),
