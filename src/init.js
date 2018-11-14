@@ -48,6 +48,12 @@ $(document).ready(function() {
       dancer.$node.children('img').addClass('flipped');
       var dancerXPosition = left - (i * deltaWidth) - (0.5 * dancer.$node.children().width());
       var dancerYPosition = top + (i * deltaHeight) - (0.5 * dancer.$node.children().height());
+
+      dancer.$node.animate({
+        top: dancerYPosition,
+        left: dancerXPosition
+      }, 1000);
+      
       dancer.setPosition(dancerYPosition, dancerXPosition);
     }
 
@@ -56,6 +62,12 @@ $(document).ready(function() {
       dancer.$node.children('img').removeClass('flipped');
       var dancerXPosition = right + (i * deltaWidth) - (0.5 * dancer.$node.children().width());
       var dancerYPosition = top + ((i - halfNumDancers) * deltaHeight) - (0.5 * dancer.$node.children().height());
+
+      dancer.$node.animate({
+        top: dancerYPosition,
+        left: dancerXPosition
+      }, 1000);
+
       dancer.setPosition(dancerYPosition, dancerXPosition);
     }
 
