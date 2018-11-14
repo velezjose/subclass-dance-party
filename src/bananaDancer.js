@@ -1,5 +1,7 @@
 var BananaDancer = function (top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
+  this.top = top;
+  this.left = left;
   this.$node.append('<img src="assets/pbj-guy.gif"/>');
   // Rotate banana dancer when clicked
   this.$node.children().click((function () {

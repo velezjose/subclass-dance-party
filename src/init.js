@@ -60,5 +60,46 @@ $(document).ready(function() {
     }
 
   });
+
+  $('.pairedDancers').on('click', function(event) {
+    var distance = function(xi, xj, yi, yj) {
+      return Math.sqrt(Math.pow((xi - xj), 2) + Math.pow((yi - yj), 2));
+    };
+
+    var midpoint = function(xi, xj, yi, yj) {
+      var xm = Math.min(xi, xj) + Math.abs(xj - xi) / 2;
+      var ym = Math.min(yi, yj) + Math.abs(yj - yi) / 2;
+      return [xm, ym];
+    };
+
+    var potentialPairs = [];
+    for (var i = 0; i < dancers.length; i++) {
+      for (var j = i + 1; j < dancers.length; j++) {
+        potentialPairs.push({
+          partner1: i,
+          partner2: j,
+          distance: distance(dancers[i].left, dancers[j].left, dancers[i].top, dancers[j].top)
+        });
+      }
+    }
+    potentialPairs.sort((a, b) => a.distance - b.distance);
+    
+    // var pairs = [];
+    // var found = {};
+    // for (var i = 0; i < potentialPairs.length; i++) {
+    //   var d1 = potentialPairs[i].partner1;
+    //   var d2 = potentialPairs[i].partner2;
+      
+    //   if (found[d1] === undefined && found[d2] === undefined) {
+    //     found[d1] = true;
+    //     found[d2] = true;
+    //     var dancer1 = dancers[d1];
+    //     var dancer2 = dancers[d2];
+    //     pairs.push([dancer1, dancer2, midpoint(dancer1.left, dancer2.left, dancer1.top, dancer2.top)]);
+    //   }
+    // }
+
+    // console.log(pairs);
+  });
 });
 

@@ -23,8 +23,8 @@ var MichaelJackson = function (top, left, timeBetweenSteps) {
   [top, left] = adjustPostion.call(this, top, left);
 
   this.setPosition(top, left);  
-  this.top = top;
   this.left = left;
+  this.top = top;
   this.initialLeft = left;
   this.counter = 0;
   this.goRight = true;
