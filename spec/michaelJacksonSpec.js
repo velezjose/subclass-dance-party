@@ -24,6 +24,10 @@ describe('Michael Jackson', function() {
     expect(mj.goRight).to.be.false;
   });
 
+  it('should inherit from Dancer', function() {
+    expect(mj.paired).to.equal(false);
+  });
+
   describe('dance', function() {
     it('should call step at least once per second', function() {
       sinon.spy(mj, 'step');
