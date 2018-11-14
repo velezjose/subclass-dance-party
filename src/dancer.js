@@ -2,7 +2,7 @@
 var Dancer = function(top, left, timeBetweenSteps) {
   // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
-
+  this.paired = false;
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
 

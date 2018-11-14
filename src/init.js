@@ -112,6 +112,14 @@ $(document).ready(function() {
         top: ym + r,
         left: xm
       });
+
+      dancer1.top = ym - r;
+      dancer1.left = xm;
+      dancer2.top = ym + r;
+      dancer2.left = xm;
+
+      dancer1.paired = true;
+      dancer2.paired = true;
     }
 
   });

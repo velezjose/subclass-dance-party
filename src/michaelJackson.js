@@ -47,7 +47,8 @@ MichaelJackson.prototype.step = function () {
   if (!this.linedUp) {
     this.counter++;
 
-    if (this.counter > 20) {
+    var numSteps = (this.paired) ? 10 : 20;
+    if (this.counter > numSteps) {
       this.counter = 0;
       this.goRight = !this.goRight;
       this.$node.children('img').toggleClass('flipped');
