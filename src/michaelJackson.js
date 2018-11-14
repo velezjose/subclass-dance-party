@@ -10,6 +10,13 @@ var MichaelJackson = function (top, left, timeBetweenSteps) {
     return [top, left];
   };
 
+  var hee = function () {
+    this.$node.append('<p class="hee">Hee</p>');
+    this.$node.children('p').on('animationend', (function () {
+      this.$node.children('p').remove();
+    }).bind(this));
+  };
+
   Dancer.call(this, top, left, 100);  
   this.$node.append('<img src="assets/moonwalk1.gif"/>');
 
@@ -23,10 +30,8 @@ var MichaelJackson = function (top, left, timeBetweenSteps) {
   this.goRight = true;
 
   this.$node.children('img').click((function() {
-    this.$node.append('<p class="hee">Hee</p>');
-    this.$node.children('p').on('animationend', (function () {
-      this.$node.children('p').remove();
-    }).bind(this));
+    hee.call(this);
+    setTimeout(hee.bind(this), 500);
   }).bind(this));
 
 };

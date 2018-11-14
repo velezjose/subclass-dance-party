@@ -91,7 +91,7 @@ body, a:link, a:visited, a:active{
   margin-left: 170px;
 
 
-  animation-duration: 1.5s;
+  animation-duration: 0.75s;
   animation-name: fade-expand;
 }
 
