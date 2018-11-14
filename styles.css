@@ -7,6 +7,7 @@ body{
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7) ), url('background.jpg');
   background-size: cover;
   font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -80,17 +81,28 @@ body, a:link, a:visited, a:active{
   }
 }
 
-/*
-.img {
-    transform: scale(-1, 1);
-    -moz-transform: scale(-1, 1);
-    -webkit-transform: scale(-1, 1);
-    -o-transform: scale(-1, 1);
-    -khtml-transform: scale(-1, 1);
-    -ms-transform: scale(-1, 1);
-}
-*/
-
 .flipped {
   transform: scale(-1, 1);
+}
+
+.hee {
+  position: absolute;
+  margin-top: -330px;
+  margin-left: 170px;
+  padding: 5px 20px;
+  border-radius: 20px;
+
+  animation-duration: 1s;
+  animation-name: fade;
+}
+
+@keyframes fade {
+  from {
+    background-color: rgba(255,255,255,1);
+    color: rgba(0,0,0,1);
+  }
+  to {
+    background-color: rgba(255,255,255,0);
+    color: rgba(0,0,0,0);
+  }
 }

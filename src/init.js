@@ -29,7 +29,6 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
 
     window.dancers.push(dancer);  
-    console.log(window.dancers);
   });
 
   $('.lineUpDancers').on('click', function(event) {
@@ -46,7 +45,7 @@ $(document).ready(function() {
 
     for (let i = 0; i < halfNumDancers; i++) {
       var dancer = window.dancers[i];
-      dancer.$node.addClass('flipped');
+      dancer.$node.children('img').addClass('flipped');
       var dancerXPosition = left - (i * deltaWidth) - (0.5 * dancer.$node.children().width());
       var dancerYPosition = top + (i * deltaHeight) - (0.5 * dancer.$node.children().height());
       dancer.setPosition(dancerYPosition, dancerXPosition);
@@ -54,7 +53,7 @@ $(document).ready(function() {
 
     for (let i = halfNumDancers; i < window.dancers.length; i++) {
       var dancer = window.dancers[i];
-      dancer.$node.removeClass('flipped');
+      dancer.$node.children('img').removeClass('flipped');
       var dancerXPosition = right + (i * deltaWidth) - (0.5 * dancer.$node.children().width());
       var dancerYPosition = top + ((i - halfNumDancers) * deltaHeight) - (0.5 * dancer.$node.children().height());
       dancer.setPosition(dancerYPosition, dancerXPosition);
