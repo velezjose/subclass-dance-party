@@ -84,22 +84,36 @@ $(document).ready(function() {
     }
     potentialPairs.sort((a, b) => a.distance - b.distance);
     
-    // var pairs = [];
-    // var found = {};
-    // for (var i = 0; i < potentialPairs.length; i++) {
-    //   var d1 = potentialPairs[i].partner1;
-    //   var d2 = potentialPairs[i].partner2;
+    var pairs = [];
+    var found = {};
+    for (var i = 0; i < potentialPairs.length; i++) {
+      var d1 = potentialPairs[i].partner1;
+      var d2 = potentialPairs[i].partner2;
       
-    //   if (found[d1] === undefined && found[d2] === undefined) {
-    //     found[d1] = true;
-    //     found[d2] = true;
-    //     var dancer1 = dancers[d1];
-    //     var dancer2 = dancers[d2];
-    //     pairs.push([dancer1, dancer2, midpoint(dancer1.left, dancer2.left, dancer1.top, dancer2.top)]);
-    //   }
-    // }
+      if (found[d1] === undefined && found[d2] === undefined) {
+        found[d1] = true;
+        found[d2] = true;
+        var dancer1 = dancers[d1];
+        var dancer2 = dancers[d2];
+        pairs.push([dancer1, dancer2, midpoint(dancer1.left, dancer2.left, dancer1.top, dancer2.top)]);
+      }
+    }
 
-    // console.log(pairs);
+    var r = 50;
+
+    for (var i = 0; i < pairs.length; i++) {
+      var [dancer1, dancer2, [xm, ym]] = pairs[i];
+
+      dancer1.$node.animate({
+        top: ym - r,
+        left: xm
+      }, 1000);
+      dancer2.$node.animate({
+        top: ym + r,
+        left: xm
+      });
+    }
+
   });
 });
 
